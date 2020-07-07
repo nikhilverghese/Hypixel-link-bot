@@ -75,6 +75,10 @@ client.on('message', msg=> {
 
             })
             .then(() => {
+                function addMember() {
+                    const role = msg.guild.roles.cache.find(role => role.name === 'Member');
+                    msg.member.roles.add(role)
+                }
                 strRank = JSON.stringify(rank.rank)
                 console.log(strRank)
                 if (strRank == "\"HELPER\"") {
@@ -90,6 +94,7 @@ client.on('message', msg=> {
                     msg.member.setNickname("[MVP+] " + username);
                     const role = msg.guild.roles.cache.find(role => role.name === 'Mvp');
                     msg.member.roles.add(role)
+                    addMember()
                     msg.reply('Account linked')
                     
                 }
@@ -97,6 +102,7 @@ client.on('message', msg=> {
                     msg.member.setNickname("[MVP] " + username) 
                     const role = msg.guild.roles.cache.find(role => role.name === 'Mvp');
                     msg.member.roles.add(role)
+                    addMember()
                     msg.reply('Account linked')
                     
                 }
@@ -104,12 +110,14 @@ client.on('message', msg=> {
                     msg.member.setNickname("[VIP+] " + username)
                     const role = msg.guild.roles.cache.find(role => role.name === 'Vip');
                     msg.member.roles.add(role)
+                    addMember()
                     msg.reply('Account linked')
                 }
                 if (strRank == "\"VIP\"") {                    
                     msg.member.setNickname("[VIP] " + username)  
                     const role = msg.guild.roles.cache.find(role => role.name === 'Vip');
                     msg.member.roles.add(role) 
+                    addMember()
                     msg.reply('Account linked')                
                 }
                 if (strRank == "null") {
