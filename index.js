@@ -8,8 +8,6 @@ let guildName;
 let roleGuildmaster = role => role.name === 'Guildmaster';
 let username;
 let statusUrl = 'https://api.slothpixel.me/api/players/'
-let guildIdUrl = 'https://api.hypixel.net/findGuild?key=2b177578-ee74-43de-9367-d003aafed973&byUuid='
-let guildUrl = 'https://api.hypixel.net/guild?key=2b177578-ee74-43de-9367-d003aafed973&id='
 var guildMasterName;
 let guildid;
 let guildRank;
@@ -33,7 +31,7 @@ client.on('message', msg=> {
         let userUUID;
         fetch(statusUrl + username)
             .then(res => res.json())
-            .then(data => rank = data)
+            .then(data => rank = data)           
             .then(() => {
                 userUUID = JSON.stringify(rank.uuid).replace(/\"/g, "");
                 let guildtemp;
@@ -82,6 +80,7 @@ client.on('message', msg=> {
                 if (strRank == "\"HELPER\"") {
                     msg.member.setNickname('[HELPER] ' + username)
                     msg.reply('Account linked')
+
                 }
                 if (strRank == "\"MVP_PLUS_PLUS\"") {
                     msg.member.setNickname('[MVP++] ' + username)
@@ -89,18 +88,28 @@ client.on('message', msg=> {
                 }
                 if (strRank == "\"MVP_PLUS\"") { 
                     msg.member.setNickname("[MVP+] " + username);
+                    const role = msg.guild.roles.cache.find(role => role.name === 'Mvp');
+                    msg.member.roles.add(role)
                     msg.reply('Account linked')
+                    
                 }
                 if (strRank == "\"MVP\"") {   
                     msg.member.setNickname("[MVP] " + username) 
+                    const role = msg.guild.roles.cache.find(role => role.name === 'Mvp');
+                    msg.member.roles.add(role)
                     msg.reply('Account linked')
+                    
                 }
                 if (strRank == "\"VIP_PLUS\"") {   
                     msg.member.setNickname("[VIP+] " + username)
+                    const role = msg.guild.roles.cache.find(role => role.name === 'Vip');
+                    msg.member.roles.add(role)
                     msg.reply('Account linked')
                 }
                 if (strRank == "\"VIP\"") {                    
-                    msg.member.setNickname("[VIP] " + username)   
+                    msg.member.setNickname("[VIP] " + username)  
+                    const role = msg.guild.roles.cache.find(role => role.name === 'Vip');
+                    msg.member.roles.add(role) 
                     msg.reply('Account linked')                
                 }
                 if (strRank == "null") {
