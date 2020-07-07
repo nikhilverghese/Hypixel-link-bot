@@ -1,0 +1,14 @@
+{
+  "name": "CookieBot",
+  "version": "1.0.0",
+  "description": "A smarter hypixel bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "agentnikv",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.2.0"
+  }
+}
